@@ -9,13 +9,13 @@ namespace ConsoleApp3
 {
     internal class Vector
     {
-        private readonly float _x;  
-        private readonly float _y;
+        private readonly double _x;  
+        private readonly double _y;
 
-        public float X { get { return _x; } }
-        public float Y { get { return _y;} }
+        public double X { get { return _x; } }
+        public double Y { get { return _y;} }
 
-        public Vector(float x, float y)
+        public Vector(double x, double y)
         {
             _x = x;
             _y = y;
@@ -42,11 +42,23 @@ namespace ConsoleApp3
             return emme;
         }
 
-        public static double operator *(Vector a, Vector b)
+        public static double operator *(Vector a, Vector b )
         {
-            double risultato = a * b * Math.Cos(35);
+            double risultato = a.X * a.Y + b.X * b.Y;
             return risultato;
         }
+
+        public static Vector operator *(Vector a, double s)
+        {
+            return new Vector(a.X * s, a.Y * s);
+        }
+
+
+        public static Vector operator /(Vector a, double s)
+        {
+            return new Vector(a.X / s, a.Y / s);
+        }
+
 
         public static  Vector Parse(string s)
         {
@@ -68,6 +80,25 @@ namespace ConsoleApp3
                 veee = null;
                 return false;   
             }
+        }
+
+        public static bool operator !=(Vector v1, Vector v2)
+        {
+            if (!(v1.X == v2.X && v1.Y == v2.Y))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        public static bool operator ==(Vector v1, Vector v2)
+        {
+            if (v1.X == v2.X && v1.Y == v2.Y)
+            {
+                return true;
+            }
+            else
+                return false;
         }
 
     }
