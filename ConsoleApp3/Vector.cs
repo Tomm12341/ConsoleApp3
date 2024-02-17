@@ -101,5 +101,12 @@ namespace ConsoleApp3
                 return false;
         }
 
+        public double Modulo(Vector v1)
+        {
+            double risultato= Math.Sqrt(Math.Pow(v1.X,2)+Math.Pow(v1.Y,2));
+
+            return risultato;
+        }
+
     }
 }
